@@ -1,0 +1,20 @@
+--- 
+- hosts: all 
+  become: yes
+  tasks: 
+          
+          - name: i want install web
+            apt:
+             
+                   name: apache2
+                   state: present
+
+            when: ansible_os_family=="Debian"  
+
+          - name: i want start/stop on ubuntu
+            service:
+
+                   name: apache2
+                   state: stopped   
+
+            when: ansible_os_family=="Debian"            
